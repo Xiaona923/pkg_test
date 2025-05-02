@@ -45,9 +45,9 @@ lsurvROC(
 \item{tol}{a constant used for removing unconverged results}
 }
 \description{
-A list of two example data frames used for demonstrating package functionality.
+It runs flexible regression models to estimate biomarker thresholds at selected quantile(s) and the corresponding sensitivities.
 It returns model results
-then plots the time-varying coefficients with 95\% confidence interval.
+and plots the time-varying coefficients with 95\% confidence interval.
 }
 \examples{
   data(example_data)

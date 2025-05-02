@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot_lsurvROC.R
 \name{plot_lsurvROC}
 \alias{plot_lsurvROC}
-\title{plot_lsurvROC is used to fit flexible regression models to estimate the longitudinal marker threshold at controlled specificity levels and the corresponding sensitivity levels.}
+\title{plot_lsurvROC}
 \usage{
 plot_lsurvROC(
   model,
@@ -36,8 +36,7 @@ plot_lsurvROC(
 \item{main}{plot title}
 }
 \description{
-It returns model results
-then plots the time-varying coefficients with 95\% confidence interval.
+It returns the conditional ROC curve and the area under curve (AUC) value.
 }
 \examples{
   model.results <- lsurvROC(dat.long = example_data$data.long, 

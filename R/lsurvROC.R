@@ -1,8 +1,8 @@
 #' lsurvROC
 #'
-#' A list of two example data frames used for demonstrating package functionality.
+#' It runs flexible regression models to estimate biomarker thresholds at selected quantile(s) and the corresponding sensitivities.
 #' It returns model results
-#' then plots the time-varying coefficients with 95% confidence interval.
+#' and plots the time-varying coefficients with 95% confidence interval.
 #'
 #' @param dat.long a data frame with long data format. It should contain subject id (id), longitudinal marker (Xt), measurement time (vtime)
 #' @param dat.short a data frame. It should contain unique subject id (id), observed event time (Y), event indicator (delta, 1 = observed event, 0 = censored), covariates

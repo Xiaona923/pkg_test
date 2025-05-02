@@ -1,7 +1,6 @@
-#' plot_lsurvROC is used to fit flexible regression models to estimate the longitudinal marker threshold at controlled specificity levels and the corresponding sensitivity levels.
-#'
-#' It returns model results
-#' then plots the time-varying coefficients with 95% confidence interval.
+#' plot_lsurvROC
+#' 
+#' It returns the conditional ROC curve and the area under curve (AUC) value.
 #'
 #' @param model a model result from lsurvROC( )
 #' @param my.newdat a data.frame used for calculating the conditional ROC curve
