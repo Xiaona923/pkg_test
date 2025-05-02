@@ -2,8 +2,9 @@
 output: md_document
 ---
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 remotes::install_github("Xiaona923/pkg_test", force = TRUE)
+library(lsurvROC)
 ```
 
 ## Introduction
