@@ -51,7 +51,7 @@ It returns the conditional ROC curve and the area under curve (AUC) value.
     show_plots = FALSE
     )
  
- plot_lsurvROC(model = model.results$models, 
+ ROC.results <- plot_lsurvROC(model = model.results$models, 
    my.newdat = data.frame(vtime = 0.5, Z = 1, Zcont = 0.25), 
     tau = seq(0.1, 0.9, 0.05),
     basis = "FP", 
@@ -59,4 +59,7 @@ It returns the conditional ROC curve and the area under curve (AUC) value.
     add = FALSE,
     col = "black", 
     lty = 1)
+    
+ ROC.results$AUC  
+ 
 }
