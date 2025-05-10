@@ -24,7 +24,7 @@
 #'     show_plots = FALSE
 #'     )
 #'  
-#'  plot_lsurvROC(model = model.results$models, 
+#'  ROC.results <- plot_lsurvROC(model = model.results$models, 
 #'    my.newdat = data.frame(vtime = 0.5, Z = 1, Zcont = 0.25), 
 #'     tau = seq(0.1, 0.9, 0.05),
 #'     basis = "FP", 
@@ -32,6 +32,9 @@
 #'     add = FALSE,
 #'     col = "black", 
 #'     lty = 1)
+#'     
+#'  ROC.results$AUC  
+#'  
 #' @import ggplot2
 #' @import dplyr
 #' @importFrom quantreg rq
@@ -62,7 +65,8 @@ plot_lsurvROC <- function(model, my.newdat, tau, basis, tol = 1e3, add = FALSE,
   
   plot_ROC(my.ROC$ROC, my.add = add, my.col = col, my.lty = lty, my.main = main)
   
-  return(list(ROC.results = my.ROC, 
+  return(list(ROC = my.ROC$ROC, 
+              AUC = my.ROC$AUC,
               AUC.sd = AUC.sd,
               ROC.resap = ROC.resap))
 }
