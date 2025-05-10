@@ -1,8 +1,12 @@
     remotes::install_github("Xiaona923/pkg_test", force = TRUE)
 
+    ## generics (0.1.3 -> 0.1.4) [CRAN]
+
     ## 
+    ## The downloaded binary packages are in
+    ##  /var/folders/xf/l79029316mxg61sybqflzb_40000gn/T//RtmpteU9pd/downloaded_packages
     ## ── R CMD build ─────────────────────────────────────────────────────────────────
-    ##      checking for file ‘/private/var/folders/xf/l79029316mxg61sybqflzb_40000gn/T/RtmpM8dsXz/remotes16eb222e6aeda/Xiaona923-pkg_test-46e2ff1/DESCRIPTION’ ...  ✔  checking for file ‘/private/var/folders/xf/l79029316mxg61sybqflzb_40000gn/T/RtmpM8dsXz/remotes16eb222e6aeda/Xiaona923-pkg_test-46e2ff1/DESCRIPTION’
+    ##   ✔  checking for file ‘/private/var/folders/xf/l79029316mxg61sybqflzb_40000gn/T/RtmpteU9pd/remotes1454025a807fd/Xiaona923-pkg_test-3cbbb18/DESCRIPTION’
     ##   ─  preparing ‘lsurvROC’:
     ##    checking DESCRIPTION meta-information ...  ✔  checking DESCRIPTION meta-information
     ##   ─  checking for LF line-endings in source and make files and shell scripts
@@ -93,4 +97,4 @@ and to construct a covariate- and measurement time-specific ROC curve.
 
     ROC.results$AUC
 
-    ## [1] 0.02386906
+    ## [1] 0.847306
