@@ -43,6 +43,7 @@ res = lsurvROC(dat.long = example_data$data.long,
               show_plots = TRUE
               )
 
+
 ```
 
 ## Conditional ROC curve 
@@ -72,5 +73,6 @@ ROC.results <- plot_lsurvROC( model = model.results$models,
 
 
 ROC.results$AUC
+ROC.results$sd
 ```
 
