@@ -14,6 +14,26 @@ plot.lsurvROC <- function(x, tol = 1e3, ROC = FALSE, ...) {
   covariate1 <- x$param$covariate1
   covariate2 <- x$param$covariate2
   
+  if(ROC == TRUE){
+    data <- x$ROC
+    f <- approxfun(data$FalsePos, data$new_meas, method = "constant", f = 0)
+    par(pty="s")
+    curve(f(x), from = 0, to = 1, ylim = c(0, 1), lwd = 1.5, 
+          xlab = "",
+          ylab = "", 
+          axes=FALSE,
+          frame=TRUE,
+          main = paste0(sprintf("AUC = %.3f", x$AUC$AUC)), 
+          ...)
+    title(xlab = "1 - Specificity", line = 3)
+    title(ylab = "Sensitivity", line = 3)
+    axis(1, cex.axis=1, tck=-0.02, lwd = 0.8)
+    axis(2, cex.axis=1, tck=-0.02, lwd = 0.8)
+    
+    
+  }
+  
+  
   #extract coefficients
   cutoff_coef = coefficients(model_results$model.results$cutoff.model$model)
   sens_coef = as.data.frame(lapply(model_results$model.results$sensitivity.model,
@@ -77,24 +97,6 @@ plot.lsurvROC <- function(x, tol = 1e3, ROC = FALSE, ...) {
                  reverse = 0,
                  nknot, tol = tol)
 
-  if(ROC == TRUE){
-    data <- x$ROC
-    f <- approxfun(data$FalsePos, data$new_meas, method = "constant", f = 0)
-    par(pty="s")
-    curve(f(x), from = 0, to = 1, ylim = c(0, 1), lwd = 1.5, 
-          xlab = "",
-          ylab = "", 
-          axes=FALSE,
-          frame=TRUE,
-          main = paste0(sprintf("AUC = %.3f", x$AUC$AUC)), 
-          ...)
-    title(xlab = "1 - Specificity", line = 3)
-    title(ylab = "Sensitivity", line = 3)
-    axis(1, cex.axis=1, tck=-0.02, lwd = 0.8)
-    axis(2, cex.axis=1, tck=-0.02, lwd = 0.8)
-    
-    
-  }
   
   
 }
