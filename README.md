@@ -1,14 +1,20 @@
     remotes::install_github("Xiaona923/pkg_test", force = TRUE)
 
-    ## generics (0.1.3 -> 0.1.4) [CRAN]
+    ## cpp11    (0.5.1  -> 0.5.2 ) [CRAN]
+    ## utf8     (1.2.5  -> 1.2.6 ) [CRAN]
+    ## pillar   (1.10.2 -> 1.11.1) [CRAN]
+    ## magrittr (2.0.3  -> 2.0.4 ) [CRAN]
+    ## isoband  (0.2.7  -> 0.3.0 ) [CRAN]
+    ## tibble   (3.2.1  -> 3.3.0 ) [CRAN]
+    ## ggplot2  (3.5.2  -> 4.0.1 ) [CRAN]
 
     ## 
     ## The downloaded binary packages are in
-    ##  /var/folders/xf/l79029316mxg61sybqflzb_40000gn/T//RtmpteU9pd/downloaded_packages
+    ##  /var/folders/xf/l79029316mxg61sybqflzb_40000gn/T//Rtmp1pjvLj/downloaded_packages
     ## ── R CMD build ─────────────────────────────────────────────────────────────────
-    ##   ✔  checking for file ‘/private/var/folders/xf/l79029316mxg61sybqflzb_40000gn/T/RtmpteU9pd/remotes1454025a807fd/Xiaona923-pkg_test-3cbbb18/DESCRIPTION’
+    ##      checking for file ‘/private/var/folders/xf/l79029316mxg61sybqflzb_40000gn/T/Rtmp1pjvLj/remotes935817f537ce/Xiaona923-pkg_test-0020d28/DESCRIPTION’ ...  ✔  checking for file ‘/private/var/folders/xf/l79029316mxg61sybqflzb_40000gn/T/Rtmp1pjvLj/remotes935817f537ce/Xiaona923-pkg_test-0020d28/DESCRIPTION’
     ##   ─  preparing ‘lsurvROC’:
-    ##    checking DESCRIPTION meta-information ...  ✔  checking DESCRIPTION meta-information
+    ##      checking DESCRIPTION meta-information ...  ✔  checking DESCRIPTION meta-information
     ##   ─  checking for LF line-endings in source and make files and shell scripts
     ##   ─  checking for empty or unneeded directories
     ##   ─  building ‘lsurvROC_0.0.1.tar.gz’
@@ -54,7 +60,6 @@ and to construct a covariate- and measurement time-specific ROC curve.
 
 <!-- -->
 
-    par(mfrow=c(1,3))
     res = lsurvROC(dat.long = example_data$data.long, 
                   dat.short = example_data$data.short,
                   cutoff.type.basis = "FP",
@@ -63,38 +68,29 @@ and to construct a covariate- and measurement time-specific ROC curve.
                   covariate2 = c("Z", "Zcont"), 
                   tau = c(0.7, 0.8, 0.9), 
                   time.window = 1, 
-                  nResap = 50, 
-                  show_plots = TRUE
+                  nResap = 50,
+                  newdata = NULL
                   )
+
+    par(mfrow=c(1,3))
+    plot(res)
 
 ![](README_files/figure-markdown_strict/unnamed-chunk-3-1.png)![](README_files/figure-markdown_strict/unnamed-chunk-3-2.png)
 
 ## Conditional ROC curve
 
-    #estimate thresholds and sensitivity levels
-    model.results <- lsurvROC(dat.long = example_data$data.long, 
-                              dat.short = example_data$data.short,
-                              cutoff.type.basis = "FP",
-                              sens.type.basis = "FP", 
-                              covariate1 = c("Z", "Zcont"), 
-                              covariate2 = c("Z", "Zcont"), 
-                              tau = seq(0.1, 0.9, 0.05), 
-                              time.window = 1, 
-                              nResap = 50, 
-                              show_plots = FALSE
-                              )
-    #get monotoned ROC curve and AUC value
-    ROC.results <- plot_lsurvROC( model = model.results$models, 
-                                  my.newdat = data.frame(vtime = 0.5, Z = 1, Zcont = 0.25), 
-                                  tau = seq(0.1, 0.9, 0.05),
-                                  basis = "FP", 
-                                  tol = 1e3, 
-                                  add = FALSE,
-                                  col = "black", 
-                                  lty = 1)
+    res = lsurvROC(dat.long = example_data$data.long, 
+                  dat.short = example_data$data.short,
+                  cutoff.type.basis = "FP",
+                  sens.type.basis = "FP", 
+                  covariate1 = c("Z", "Zcont"), 
+                  covariate2 = c("Z", "Zcont"), 
+                  tau = seq(0.1, 0.9, 0.05), 
+                  time.window = 1, 
+                  nResap = 50,
+                  newdata = data.frame(vtime = 0.5, Z = 1, Zcont = 0.25)
+                  )
 
-![](README_files/figure-markdown_strict/unnamed-chunk-4-1.png)
+    plot(res, ROC = TRUE)
 
-    ROC.results$AUC
-
-    ## [1] 0.847306
+![](README_files/figure-markdown_strict/unnamed-chunk-4-1.png)![](README_files/figure-markdown_strict/unnamed-chunk-4-2.png)![](README_files/figure-markdown_strict/unnamed-chunk-4-3.png)![](README_files/figure-markdown_strict/unnamed-chunk-4-4.png)![](README_files/figure-markdown_strict/unnamed-chunk-4-5.png)![](README_files/figure-markdown_strict/unnamed-chunk-4-6.png)![](README_files/figure-markdown_strict/unnamed-chunk-4-7.png)
