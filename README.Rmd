@@ -42,6 +42,7 @@ res = lsurvROC(dat.long = example_data$data.long,
               newdata = NULL
               )
 
+plot(res)
 
 ```
 
