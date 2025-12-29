@@ -4,11 +4,9 @@
 \alias{plot.lsurvROC}
 \title{Plot method for lsurvROC objects}
 \usage{
-\method{plot}{lsurvROC}(x, time, ROC = FALSE, ...)
+\method{plot}{lsurvROC}(x, ROC = FALSE, ...)
 }
 \arguments{
-\item{time}{time point "t" at which we want to plot the ROC curve}
-
 \item{ROC}{logic value}
 
 \item{model_results}{A lsurvROC object.}
