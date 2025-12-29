@@ -14,9 +14,7 @@ lsurvROC(
   tau,
   time.window,
   nResap = 200,
-  show_plots = TRUE,
-  nknot = NULL,
-  tol = 1000
+  nknot = NULL
 )
 }
 \arguments{
@@ -38,9 +36,9 @@ lsurvROC(
 
 \item{nResap}{a numeric value to perform perturbation resampling. The default value = 200. Larger value can generate more accurate ASE value}
 
-\item{show_plots}{if TRUE then the time-varying coefficients plot will be displayed}
-
 \item{nknot}{if basis function is B splines, need to specify the number of knot}
+
+\item{show_plots}{if TRUE then the time-varying coefficients plot will be displayed}
 
 \item{tol}{a constant used for removing unconverged results}
 }
