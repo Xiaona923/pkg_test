@@ -12,8 +12,9 @@ plot.lsurvROC <- function(x, ROC = FALSE, ...) {
   sens.type.basis <- x$param$sens.type.basis
   covariate1 <- x$param$covariate1
   covariate2 <- x$param$covariate2
-  tol = x$param$tol
-  nknot = x$param$nknot
+  tol <- x$param$tol
+  nknot <- x$param$nknot
+  
   if(ROC == TRUE){
     data <- x$ROC
     f <- approxfun(data$FalsePos, data$new_meas, method = "constant", f = 0)

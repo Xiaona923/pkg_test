@@ -88,7 +88,7 @@ lsurvROC <- function(dat.long, dat.short,
                                 sens.type.basis = sens.type.basis, 
                                 covariate1 = covariate1, 
                                 covariate2 = covariate2,
-                                nknot = nknot,
+                                nknot = nknot, 
                                 tol = tol))
     
   }else{
@@ -99,7 +99,7 @@ lsurvROC <- function(dat.long, dat.short,
                                 sens.type.basis = sens.type.basis, 
                                 covariate1 = covariate1, 
                                 covariate2 = covariate2,
-                                nknot = nknot,
+                                nknot = nknot, 
                                 tol = tol))
                    
   }
