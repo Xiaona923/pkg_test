@@ -79,18 +79,28 @@ lsurvROC <- function(dat.long, dat.short,
     
     AUC.sd = sd(unlist(lapply(ROC.resap, "[", "AUC")))
     
+    output <- list(model = model_results,
+                   ROC = my.ROC$ROC,
+                   AUC = list(AUC = my.ROC$AUC, sd = AUC.sd),
+                   param = list(times = vtime,
+                                taus = tau,
+                                cutoff.type.basis = cutoff.type.basis,
+                                sens.type.basis = sens.type.basis, 
+                                covariate1 = covariate1, 
+                                covariate2 = covariate2)
     
+  }else{
+    output <- list(model = model_results,
+                   param = list(times = vtime,
+                                taus = tau,
+                                cutoff.type.basis = cutoff.type.basis,
+                                sens.type.basis = sens.type.basis, 
+                                covariate1 = covariate1, 
+                                covariate2 = covariate2)
+                   
   }
+  
 
-  output <- list(model = model_results,
-                 ROC = my.ROC$ROC,
-                 AUC = list(AUC = my.ROC$AUC, sd = AUC.sd),
-                 param = list(times = vtime,
-                              taus = tau,
-                              cutoff.type.basis = cutoff.type.basis,
-                              sens.type.basis = sens.type.basis, 
-                              covariate1 = covariate1, 
-                              covariate2 = covariate2)
                  )
   
   class(output) <- "lsurvROC"
