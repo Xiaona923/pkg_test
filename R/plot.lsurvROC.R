@@ -1,10 +1,12 @@
 #' @title Plot method for lsurvROC objects
 #' @description Custom plot for lsurvROC class.
-#' @param model_results A lsurvROC object.
+#' @param x A lsurvROC object
 #' @param ROC logic value
+#' @param newdata logic valu
+#' @param ROC.tau logic valu
 #' @method plot lsurvROC
 #' @export
-plot.lsurvROC <- function(x, ROC = FALSE,...) {
+plot.lsurvROC <- function(x, ROC = FALSE, newdata = NULL, ROC.tau = NULL, ...) {
   model_results <- x$model
   vtime <- x$times
   tau <- x$tau
@@ -76,5 +78,39 @@ plot.lsurvROC <- function(x, ROC = FALSE,...) {
                  reverse = 0,
                  nknot, tol = tol)
 
+  if(ROC == TRUE){
+    #get the main ROC curve
+    my.ROC <- get_ROC(model = model_results$model.results$sensitivity.model,
+                      basis = sens.type.basis, 
+                      my.newdat = newdata,
+                      tau = ROC.tau, 
+                      tol = tol)
+    rownames(my.ROC$ROC) <- NULL
+    
+    #get perturbed ROC curves
+    ROC.resap <- lapply(model_results$resap.results, 
+                        function(x){get_ROC(x$sensitivity.model,
+                                            basis = sens.type.basis, 
+                                            my.newdat = newdata, 
+                                            tau = ROC.tau)})
+    
+    AUC.sd = sd(unlist(lapply(ROC.resap, "[", "AUC")))
+    
+    data <- my.ROC$ROC
+    f <- approxfun(data$FalsePos, data$new_meas, method = "constant", f = 0)
+    par(pty="s")
+    curve(f(x), from = 0, to = 1, ylim = c(0, 1), lwd = 1.5, 
+          xlab = "",
+          ylab = "", 
+          axes=FALSE,
+          frame=TRUE, ...)
+    title(xlab = "1 - Specificity", line = 3)
+    title(ylab = "Sensitivity", line = 3)
+    axis(1, cex.axis=1, tck=-0.02, lwd = 0.8)
+    axis(2, cex.axis=1, tck=-0.02, lwd = 0.8)
+    
+    
+  }
+  
   
 }

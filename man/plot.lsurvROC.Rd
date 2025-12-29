@@ -4,12 +4,16 @@
 \alias{plot.lsurvROC}
 \title{Plot method for lsurvROC objects}
 \usage{
-\method{plot}{lsurvROC}(x, ROC = FALSE, ...)
+\method{plot}{lsurvROC}(x, ROC = FALSE, newdata = NULL, ROC.tau = NULL, ...)
 }
 \arguments{
+\item{x}{A lsurvROC object}
+
 \item{ROC}{logic value}
 
-\item{model_results}{A lsurvROC object.}
+\item{newdata}{logic valu}
+
+\item{ROC.tau}{logic valu}
 }
 \description{
 Custom plot for lsurvROC class.
