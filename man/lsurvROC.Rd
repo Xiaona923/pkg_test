@@ -14,7 +14,9 @@ lsurvROC(
   tau,
   time.window,
   nResap = 200,
-  nknot = NULL
+  newdata = NULL,
+  nknot = NULL,
+  tol = 1000
 )
 }
 \arguments{
@@ -38,9 +40,9 @@ lsurvROC(
 
 \item{nknot}{if basis function is B splines, need to specify the number of knot}
 
-\item{show_plots}{if TRUE then the time-varying coefficients plot will be displayed}
-
 \item{tol}{a constant used for removing unconverged results}
+
+\item{show_plots}{if TRUE then the time-varying coefficients plot will be displayed}
 }
 \description{
 It runs flexible regression models to estimate biomarker thresholds at selected quantile(s) and the corresponding sensitivities.
