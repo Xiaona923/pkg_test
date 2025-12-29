@@ -3,10 +3,9 @@
 #' @param x A lsurvROC object
 #' @param tol logic value
 #' @param ROC logic value
-#' @param newdata logic valu
 #' @method plot lsurvROC
 #' @export
-plot.lsurvROC <- function(x, tol = 1e3, ROC = FALSE, newdata = NULL, ...) {
+plot.lsurvROC <- function(x, tol = 1e3, ROC = FALSE, ...) {
   model_results <- x$model
   vtime <- x$param$times
   tau <- x$param$tau
@@ -87,7 +86,7 @@ plot.lsurvROC <- function(x, tol = 1e3, ROC = FALSE, newdata = NULL, ...) {
           ylab = "", 
           axes=FALSE,
           frame=TRUE,
-          main = paste0("ROC, ", sprintf("AUC = %.3f", x$AUC$AUC)), 
+          main = paste0(sprintf("AUC = %.3f", x$AUC$AUC)), 
           ...)
     title(xlab = "1 - Specificity", line = 3)
     title(ylab = "Sensitivity", line = 3)
