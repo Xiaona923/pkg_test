@@ -12,7 +12,7 @@ plot.lsurvROC <- function(x, ROC = FALSE,...) {
   sens.type.basis <- x$sens.type.basis
   covariate1 <- x$covariate1
   covariate2 <- x$covariate2
-  
+  tol = 1e3
   #extract coefficients
   cutoff_coef = coefficients(model_results$model.results$cutoff.model$model)
   sens_coef = as.data.frame(lapply(model_results$model.results$sensitivity.model,
@@ -43,7 +43,6 @@ plot.lsurvROC <- function(x, ROC = FALSE,...) {
                                 )})
   
   #retain results only if the model has converged
-  tol = 1e3
   sens_resap_clean <- mapply(function(x, y){
     extreme_val <- apply(x, 2, function(q) any(abs(q) > tol)) 
     x[ , !y | extreme_val] <- NA
