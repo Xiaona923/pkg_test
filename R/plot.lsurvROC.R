@@ -63,7 +63,7 @@ plot.lsurvROC <- function(x, ROC = FALSE,...) {
                  titles = unlist(sapply(0:ncovari1, function(i) bquote(beta[.(paste(i)) ~ ","~ tau ~ "= ["~.(paste(tau_values, collapse = ", ")) ~ "]"] ~ "(s)"))),
                  reverse = 0,
                  nknot,
-                 tol)
+                 tol = tol)
   
   #plot sens model time-dependent coef
   ncovari2 <- length(covariate2)
@@ -75,7 +75,7 @@ plot.lsurvROC <- function(x, ROC = FALSE,...) {
                  visit.time = vtime,
                  titles = unlist(sapply(0:ncovari2, function(i) bquote(gamma[.(paste(i)) ~ ","~ tau ~ "= ["~.(paste(tau_values, collapse = ", ")) ~ "]"] ~ "(s)"))),
                  reverse = 0,
-                 nknot, tol)
+                 nknot, tol = tol)
 
   
 }
