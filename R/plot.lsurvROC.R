@@ -1,11 +1,10 @@
 #' @title Plot method for lsurvROC objects
 #' @description Custom plot for lsurvROC class.
 #' @param model_results A lsurvROC object.
-#' @param time time point "t" at which we want to plot the ROC curve
 #' @param ROC logic value
 #' @method plot lsurvROC
 #' @export
-plot.lsurvROC <- function(x, time, ROC = FALSE,...) {
+plot.lsurvROC <- function(x, ROC = FALSE,...) {
   model_results <- x$model
   vtime <- x$times
   tau <- x$tau
