@@ -140,12 +140,13 @@ lsurvROC <- function(dat.long, dat.short,
   #                             sensitivity = sens_plot))
   # 
   output <- list(model = model_results,
-                 times = vtime,
-                 taus = tau,
-                 cutoff.type.basis = cutoff.type.basis,
-                 sens.type.basis = sens.type.basis, 
-                 covariate1 = covariate1, 
-                 covariate2 = covariate2)
+                 param = list(times = vtime,
+                              taus = tau,
+                              cutoff.type.basis = cutoff.type.basis,
+                              sens.type.basis = sens.type.basis, 
+                              covariate1 = covariate1, 
+                              covariate2 = covariate2)
+                 )
   
   class(output) <- "lsurvROC"
   return(output)

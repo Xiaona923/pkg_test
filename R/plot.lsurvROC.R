@@ -1,20 +1,20 @@
 #' @title Plot method for lsurvROC objects
 #' @description Custom plot for lsurvROC class.
 #' @param x A lsurvROC object
+#' @param tol logic value
 #' @param ROC logic value
 #' @param newdata logic valu
-#' @param ROC.tau logic valu
 #' @method plot lsurvROC
 #' @export
-plot.lsurvROC <- function(x, ROC = FALSE, newdata = NULL, ROC.tau = NULL, ...) {
+plot.lsurvROC <- function(x, tol = 1e3, ROC = FALSE, newdata = NULL, ...) {
   model_results <- x$model
-  vtime <- x$times
-  tau <- x$tau
-  cutoff.type.basis <- x$cutoff.type.basis
-  sens.type.basis <- x$sens.type.basis
-  covariate1 <- x$covariate1
-  covariate2 <- x$covariate2
-  tol = 1e3
+  vtime <- x$param$times
+  tau <- x$param$tau
+  cutoff.type.basis <- x$param$cutoff.type.basis
+  sens.type.basis <- x$param$sens.type.basis
+  covariate1 <- x$param$covariate1
+  covariate2 <- x$param$covariate2
+  
   #extract coefficients
   cutoff_coef = coefficients(model_results$model.results$cutoff.model$model)
   sens_coef = as.data.frame(lapply(model_results$model.results$sensitivity.model,
@@ -83,7 +83,7 @@ plot.lsurvROC <- function(x, ROC = FALSE, newdata = NULL, ROC.tau = NULL, ...) {
     my.ROC <- get_ROC(model = model_results$model.results$sensitivity.model,
                       basis = sens.type.basis, 
                       my.newdat = newdata,
-                      tau = ROC.tau, 
+                      tau = tau, 
                       tol = tol)
     rownames(my.ROC$ROC) <- NULL
     
@@ -92,7 +92,7 @@ plot.lsurvROC <- function(x, ROC = FALSE, newdata = NULL, ROC.tau = NULL, ...) {
                         function(x){get_ROC(x$sensitivity.model,
                                             basis = sens.type.basis, 
                                             my.newdat = newdata, 
-                                            tau = ROC.tau)})
+                                            tau = tau)})
     
     AUC.sd = sd(unlist(lapply(ROC.resap, "[", "AUC")))
     
