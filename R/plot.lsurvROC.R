@@ -1,11 +1,10 @@
 #' @title Plot method for lsurvROC objects
 #' @description Custom plot for lsurvROC class.
-#' @param x A lsurvROC object
-#' @param tol logic value
-#' @param ROC logic value
+#' @param x a lsurvROC object
+#' @param ROC a logical value that indicates whether plot the ROC curve
 #' @method plot lsurvROC
 #' @export
-plot.lsurvROC <- function(x, tol = 1e3, ROC = FALSE, ...) {
+plot.lsurvROC <- function(x, ROC = FALSE, ...) {
   model_results <- x$model
   vtime <- x$param$times
   tau <- x$param$tau
@@ -13,7 +12,7 @@ plot.lsurvROC <- function(x, tol = 1e3, ROC = FALSE, ...) {
   sens.type.basis <- x$param$sens.type.basis
   covariate1 <- x$param$covariate1
   covariate2 <- x$param$covariate2
-  
+  tol = x$param$tol
   if(ROC == TRUE){
     data <- x$ROC
     f <- approxfun(data$FalsePos, data$new_meas, method = "constant", f = 0)

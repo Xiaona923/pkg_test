@@ -87,7 +87,8 @@ lsurvROC <- function(dat.long, dat.short,
                                 cutoff.type.basis = cutoff.type.basis,
                                 sens.type.basis = sens.type.basis, 
                                 covariate1 = covariate1, 
-                                covariate2 = covariate2))
+                                covariate2 = covariate2,
+                                tol = tol))
     
   }else{
     output <- list(model = model_results,
@@ -96,7 +97,8 @@ lsurvROC <- function(dat.long, dat.short,
                                 cutoff.type.basis = cutoff.type.basis,
                                 sens.type.basis = sens.type.basis, 
                                 covariate1 = covariate1, 
-                                covariate2 = covariate2))
+                                covariate2 = covariate2,
+                                tol = tol))
                    
   }
   
